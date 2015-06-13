@@ -3,7 +3,8 @@ var app = angular.module('FoodMarket',[
 	'ui.bootstrap'
 	]);
 
-app.constant('resourceUrl', '/resource/'+Date.now()+'/FOODMARKET/js');
+//app.constant('resourceUrl', '/resource/'+Date.now()+'/FOODMARKET/js');
+app.constant('resourceUrl', 'js');
 
 app.config(['$routeProvider', 'resourceUrl', function($routeProvider, resourceUrl){
 	$routeProvider
@@ -48,6 +49,10 @@ app
 
 		$scope.addNew = function(){
 			$location.path("/new");
+		}
+
+		$scope.clear = function(){
+			$scope.searchFood = "";
 		}
 
 	}])
