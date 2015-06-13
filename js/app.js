@@ -1,36 +1,35 @@
 var app = angular.module('FoodMarket',[
-  	'ui.router',
+  	'ngRoute',
 	'ui.bootstrap'
 	]);
 
-app.config(function($stateProvider, $urlRouterProvider){
-	$stateProvider
+app.constant('resourceUrl', '/resource/'+Date.now()+'/FOODMARKET/js');
 
-		.state('home', {
-			url: '/',
-			templateUrl: 'js/food/foodList.html',
-			params: {dishId: null},
+app.config(['$routeProvider', 'resourceUrl', function($routeProvider, resourceUrl){
+	$routeProvider
+
+		.when('/', {
+			templateUrl: resourceUrl + '/food/foodList.html',
 			controller: 'FoodListCtrl'
 		})
 
-		.state('dishPage', {
-			url: '/dish/:dishId',
-			templateUrl: 'js/food/dishPage.html',
+		.when('/dish/:dishId', {
+			templateUrl: resourceUrl + '/food/dishPage.html',
 			controller: 'DishPageCtrl'
 		})
 
-		.state('newDish', {
-			url: '/new',
-			templateUrl: 'js/food/newDish.html',
-			params: {new_dish: null},
+		.when('/new', {
+			templateUrl: resourceUrl + '/food/newDish.html',
 			controller: 'NewDishCtrl'
-		});
+		})
 
-    $urlRouterProvider.otherwise('/');
-});
+		.otherwise({
+			redirectTo: '/'
+		});
+}]);
 
 app
-	.controller('FoodListCtrl', ['$scope', '$state', '$stateParams',function($scope, $state, $stateParams) {
+	.controller('FoodListCtrl', ['$scope', '$location',function($scope, $location) {
 
 		$scope.dishList = [
 			{name:"Pork Chop", cost:"$10", category:"Western", meat:"Pork"}, 
@@ -44,16 +43,16 @@ app
 			];
 
 		$scope.getSelectedDish = function(dish){
-			$state.go("dishPage", {dishId: dish.name});
+			$location.path("/dish/" + dish.name);
 		};
 
 		$scope.addNew = function(){
-			$state.go("newDish");
+			$location.path("/new");
 		}
 
 	}])
 
-	.controller('DishPageCtrl', ['$scope', '$state', '$stateParams',function($scope, $state, $stateParams) {
+	.controller('DishPageCtrl', ['$scope', '$location', '$routeParams',function($scope, $location, $routeParams) {
 
 		$scope.ingredientList = [
 			{name:"Pork", cost:6, quantity:"1"}, 
@@ -66,7 +65,7 @@ app
 			{name:"Onion", cost:0.79, quantity:"1"}
 			];
 
-		$scope.dishPage = $stateParams.dishId;
+		$scope.dishPage = $routeParams.dishId;
 
 		calcTotalCost = function(){
 			var totalCost = 0;
@@ -77,14 +76,14 @@ app
 		};
 
 		$scope.goBack = function(){
-			$state.go("home");
+			$location.path("/");
 		}
 
 		$scope.totalCost = calcTotalCost();
 
 	}])
 
-	.controller('NewDishCtrl', ['$scope', '$state',function($scope, $state) {
+	.controller('NewDishCtrl', ['$scope', '$location',function($scope, $location) {
 
 		$scope.chosenItem = [];
 		$scope.cost = [];
@@ -115,7 +114,7 @@ app
 
 			console.log(tempArr);
 
-			$state.go("home", {new_dish: tempArr});
+			$location.path("/");
 		}
 
 	}])
