@@ -14,7 +14,7 @@ app.config(['$routeProvider', 'resourceUrl', function($routeProvider, resourceUr
 			controller: 'FoodListCtrl'
 		})
 
-		.when('/dish/:dishId', {
+		.when('/dish/:dishId/:dishCat', {
 			templateUrl: resourceUrl + '/food/dishPage.html',
 			controller: 'DishPageCtrl'
 		})
@@ -44,7 +44,7 @@ app
 			];
 
 		$scope.getSelectedDish = function(dish){
-			$location.path("/dish/" + dish.name);
+			$location.path("/dish/" + dish.name + "/" + dish.category);
 		};
 
 		$scope.addNew = function(){
@@ -70,7 +70,9 @@ app
 			{name:"Onion", cost:0.79, quantity:"1"}
 			];
 
-		$scope.dishPage = $routeParams.dishId;
+		console.log($routeParams.dishCat);
+		$scope.dishName = $routeParams.dishId;
+		$scope.dishCategory = $routeParams.dishCat;
 
 		calcTotalCost = function(){
 			var totalCost = 0;

@@ -23,14 +23,17 @@
     <link href='http://fonts.googleapis.com/css?family=Wire+One' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
     
 </head>
 
 <!-- apply our angular app -->
 <body ng-app="FoodMarket">
-    <h1 class="heading">Food Market</h1>
     <div class="container">
-        <div ng-view="ng-view" class="animated fadeInRight"></div>
+    <img class="title" src="js/img/title.png">
+    <!-- <h1 class="heading">Food Market</h1> -->
+        <div ng-view="ng-view" class="innerContainer animated fadeInRight"></div>
     </div>
 
 </body>

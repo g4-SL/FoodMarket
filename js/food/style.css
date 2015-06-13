@@ -1,3 +1,17 @@
+body{
+	color: #505050;
+	background-color: #9BD7D5;
+	font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.title{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: 80%;
+}
+
 .heading{
 	margin-top: 20px;
 	margin-bottom: 20px;
@@ -6,8 +20,24 @@
     text-align: center;
 }
 
+.sub-heading{
+	text-transform: uppercase;
+}
+
 .container{
 	width: 80%;
+	height: auto;
+	background-color: #FFF5C3;
+	padding-bottom: 200px;
+}
+
+.resultCont{
+	font-size: 40px;
+}
+
+.innerContainer{
+	padding: 20px 20px 0px 20px;
+	font-size: 20px;
 }
 
 .scrollable-menu {

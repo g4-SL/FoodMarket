@@ -1,3 +1,4 @@
+<h1 class="sub-heading">Search for food</h1>
 <div class="row">
    	<div id="custom-search-input">
         <div class="input-group col-md-12">
@@ -11,7 +12,8 @@
     </div>
 </div>
 <br>
-<table class="table table-hover" id="foodSearchList">
+<br>
+<table class="table table-hover" id="foodSearchList" ng-hide="!filteredDishList.length">
 	<thead>
 		<tr>
 			<th></th>
@@ -28,7 +30,7 @@
 	</tr>
 </table>
 
-<div class="container" ng-show="!filteredDishList.length">
+<div class="container resultCont" ng-show="!filteredDishList.length">
 	Results not found
 	<br>
 	<input type="submit" value="Add new recipe" class="btn btn-default" ng-click="addNew()">
