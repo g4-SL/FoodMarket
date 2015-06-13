@@ -10,22 +10,6 @@
         </div>
     </div>
 </div>
-<!-- <br>
-<div class="row">
-	<div class="dropdown">
-	  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-	    {{currCategory}}
-	    <span class="caret"></span>
-	  </button>
-	  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-	  	<li ng-repeat="dishType in category">
-	  		<a ng-click="setCurrentVal(dishType)">
-	  		{{dishType}}
-	  		</a>
-	  	</li>
-	  </ul>
-	</div>
-</div> -->
 <br>
 <table class="table table-hover" id="foodSearchList">
 	<thead>
@@ -36,10 +20,18 @@
 			<th>Meat</th>
 		</tr>
 	</thead>
-	<tr ng-repeat="dish in dishList | filter:searchFood" ng-click="getSelectedDish(dish)">
+	<tr ng-repeat="dish in filteredDishList = (dishList | filter:searchFood)" ng-click="getSelectedDish(dish)">
 		<td>{{dish.name}}</td>
 		<td>{{dish.cost}}</td>
 		<td>{{dish.category}}</td>
 		<td>{{dish.meat}}</td>
 	</tr>
 </table>
+
+<div class="container" ng-show="!filteredDishList.length">
+	Results not found
+	<br>
+	<button ng-click="addNew()">Add new recipe</button>
+</div>
+
+

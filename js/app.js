@@ -9,27 +9,28 @@ app.config(function($stateProvider, $urlRouterProvider){
 		.state('home', {
 			url: '/',
 			templateUrl: 'js/food/foodList.html',
-			params:{dishId: null},
+			params: {dishId: null},
 			controller: 'FoodListCtrl'
 		})
 
-		.state('dishPage',{
+		.state('dishPage', {
 			url: '/dish/:dishId',
 			templateUrl: 'js/food/dishPage.html',
 			controller: 'DishPageCtrl'
+		})
+
+		.state('newDish', {
+			url: '/new',
+			templateUrl: 'js/food/newDish.html',
+			params: {new_dish: null},
+			controller: 'NewDishCtrl'
 		});
 
     $urlRouterProvider.otherwise('/');
 });
 
 app
-	.controller('FoodListCtrl', ['$scope', '$state',function($scope, $state) {
-	
-	/*	$scope.category = ["Chinese", "Indian", "Western"];
-		$scope.currCategory = "Category";
-		$scope.setCurrentVal = function (item){
-			$scope.currCategory = item;
-		}*/
+	.controller('FoodListCtrl', ['$scope', '$state', '$stateParams',function($scope, $state, $stateParams) {
 
 		$scope.dishList = [
 			{name:"Pork Chop", cost:"$10", category:"Western", meat:"Pork"}, 
@@ -45,6 +46,10 @@ app
 		$scope.getSelectedDish = function(dish){
 			$state.go("dishPage", {dishId: dish.name});
 		};
+
+		$scope.addNew = function(){
+			$state.go("newDish");
+		}
 
 	}])
 
@@ -78,4 +83,41 @@ app
 		$scope.totalCost = calcTotalCost();
 
 	}])
+
+	.controller('NewDishCtrl', ['$scope', '$state',function($scope, $state) {
+
+		$scope.chosenItem = [];
+		$scope.cost = [];
+		$scope.id = 1;
+		$scope.currVal = 1;
+
+		$scope.itemList = ["Onion", "Butter", "Garlic", "Flour", "Chicken broth", "Buttermilk", "Vegetable oil", "Ginger", "Chicken", "Pork", "Beef", "Bacon", "Broccoli", "Brussel sprouts"];
+		$scope.currCategory = "Select an ingredient";
+		
+		$scope.setCurrentVal = function (item){
+			$scope.currCategory = item;
+			for(var i in $scope.chosenItem){
+				if($scope.chosenItem[i] == item)
+					return;
+			}
+			$scope.chosenItem.push(item);
+		}
+
+		$scope.submitNewDish = function(){
+			var totalCost = 0;
+			var tempArr = [];
+
+			for(var i in $scope.cost){
+				totalCost = totalCost + $scope.cost[i];
+			}
+
+			tempArr.push({name: $scope.InputName, cost: totalCost, category: $scope.InputCategory, meat: $scope.InputMeat});
+
+			console.log(tempArr);
+
+			$state.go("home", {new_dish: tempArr});
+		}
+
+	}])
+
 ;
