@@ -1,4 +1,4 @@
-<h1 class="sub-heading">Search for food</h1>
+<p class="sub-heading">Search for food</p>
 <div class="row">
    	<div id="custom-search-input">
         <div class="input-group col-md-12">
@@ -18,27 +18,27 @@
 		<tr>
 			<th></th>
 			<th>
-				<a href="" ng-click="orderByField='totalCost'; reverseSort = !reverseSort">
+				<a href="" ng-click="orderByField='cost'; reverseSort = !reverseSort">
 					Total cost
-					<span ng-show="orderByField == 'totalCost'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+					<span ng-show="orderByField == 'cost'"><span ng-show="!reverseSort" class="ion-arrow-up-b"></span><span ng-show="reverseSort" class="ion-arrow-down-b"></span>
           		</a>
 			</th>
 			<th>
 				<a href="" ng-click="orderByField='cuisine'; reverseSort = !reverseSort">
 					Cuisine
-					<span ng-show="orderByField == 'cuisine'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+					<span ng-show="orderByField == 'cuisine'"><span ng-show="!reverseSort" class="ion-arrow-up-b"></span><span ng-show="reverseSort" class="ion-arrow-down-b"></span>
           		</a>
 			</th>
 			<th>
 				<a href="" ng-click="orderByField='meat'; reverseSort = !reverseSort">
 					Meat
-					<span ng-show="orderByField == 'meat'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+					<span ng-show="orderByField == 'meat'"><span ng-show="!reverseSort" class="ion-arrow-up-b"></span><span ng-show="reverseSort" class="ion-arrow-down-b"></span>
           		</a>
 			</th>
 			<th>
 				<a href="" ng-click="orderByField='type'; reverseSort = !reverseSort">
 					Type
-					<span ng-show="orderByField == 'type'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+					<span ng-show="orderByField == 'type'"><span ng-show="!reverseSort" class="ion-arrow-up-b"></span><span ng-show="reverseSort" class="ion-arrow-down-b"></span>
           		</a>
 			</th>
 		</tr>
@@ -57,5 +57,3 @@
 	<br>
 	<input type="submit" value="Add new recipe" class="btn btn-default" ng-click="addNew()">
 </div>
-
-

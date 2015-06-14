@@ -3,7 +3,7 @@ app.controller('FoodListCtrl', ['$scope', '$location', 'Recipe', function($scope
   	$scope.reverseSort = false;
 
 	$scope.populateFoodList = function(){
-		var criteria = {orderby: [{Name: 'ASC'}], limit: 10};
+		var criteria = {orderby: [{Name: 'ASC'}]};
 		var tempList = [];
 
 		Recipe.retrieve(criteria, function(error, results, event) {
@@ -14,7 +14,7 @@ app.controller('FoodListCtrl', ['$scope', '$location', 'Recipe', function($scope
 
 			results.forEach(function(elem){
 				tempList.push({
-					name: elem.get("Name"),
+					name: decode(elem.get("Name")),
 					cost: (elem.get("RecipeTotalCost")).toFixed(2),
 					cuisine: elem.get("RecipeCuisine"),
 					meat: elem.get("RecipeMeat"),
@@ -41,3 +41,11 @@ app.controller('FoodListCtrl', ['$scope', '$location', 'Recipe', function($scope
 	$scope.populateFoodList();
 
 }]);
+
+function decode(str){
+	var div = document.createElement('div');
+	div.innerHTML = str
+	var decoded = div.firstChild.nodeValue;
+	console.log(decoded);
+	return decoded;
+}

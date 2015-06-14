@@ -1,20 +1,17 @@
-body{
+/*body{
 	color: #505050;
-	background-color: #9BD7D5;
+	background-color: #B5B5B5;
 	font-family: 'Open Sans Condensed', sans-serif;
-}
+}*/
 
-.title{
-    display: block;
+.heading{
+    background-color: #404040;
+    color: #fff;
+    padding: 20px 0 20px 0; 
+	margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
     width: 80%;
-    height: 80%;
-}
-
-.heading{
-	margin-top: 20px;
-	margin-bottom: 20px;
 	font-family: 'Lobster';
 	font-size: 60px;
     text-align: center;
@@ -25,28 +22,28 @@ body{
 }
 
 .container{
-	width: 80%;
-	height: auto;
-	background-color: #FFF5C3;
+    margin-left: auto;
+    margin-right: auto;
+	background-color: #fff;
 	padding-bottom: 200px;
+    padding: 40px 40px 200px 40px;
+/*    font-size: 20px;
+    font-family: 'Open Sans Condensed', sans-serif;*/
 }
 
 .resultCont{
 	font-size: 40px;
 }
 
-.innerContainer{
-	padding: 20px 20px 0px 20px;
-	font-size: 20px;
-}
 
 .scrollable-menu {
     height: auto;
     max-height: 200px;
+    width: 100%;
     overflow-x: hidden;
 }
 
-.animated { 
+/*.animated { 
     -webkit-animation-duration: 1s; 
     animation-duration: 1s; 
     -webkit-animation-fill-mode: both; 
@@ -103,4 +100,4 @@ body{
 .fadeInRight { 
     -webkit-animation-name: fadeInRight; 
     animation-name: fadeInRight; 
-}
+}*/

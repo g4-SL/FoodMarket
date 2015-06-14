@@ -71,6 +71,13 @@ app.controller('NewDishCtrl', ['$scope', '$location', 'Recipe', 'Ingredient', fu
 		});
 	}
 
+	$scope.removeItem = function(item){
+		for(var i in $scope.chosenItem){
+			if($scope.chosenItem[i] == item)
+				$scope.chosenItem.splice(i, 1);
+		}
+	}
+
 	$scope.getIngredientList();
 
 }]);
