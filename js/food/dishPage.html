@@ -12,10 +12,10 @@
 	<tr ng-repeat="item in ingredientList">
 		<td>{{item.name}}</td>
 		<td>{{item.quantity}}</td>
-		<td>{{item.cost}}</td>
+		<td>${{item.cost}}</td>
 	</tr>
 	<tr>
-		<td></td><td></td><td>{{totalCost}}</td>
+		<td></td><td></td><td>${{totalCost}}</td>
 	</tr>
 </table>
 <br>

@@ -17,16 +17,38 @@
 	<thead>
 		<tr>
 			<th></th>
-			<th>Total cost</th>
-			<th>Category</th>
-			<th>Meat</th>
+			<th>
+				<a href="" ng-click="orderByField='totalCost'; reverseSort = !reverseSort">
+					Total cost
+					<span ng-show="orderByField == 'totalCost'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+          		</a>
+			</th>
+			<th>
+				<a href="" ng-click="orderByField='cuisine'; reverseSort = !reverseSort">
+					Cuisine
+					<span ng-show="orderByField == 'cuisine'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+          		</a>
+			</th>
+			<th>
+				<a href="" ng-click="orderByField='meat'; reverseSort = !reverseSort">
+					Meat
+					<span ng-show="orderByField == 'meat'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+          		</a>
+			</th>
+			<th>
+				<a href="" ng-click="orderByField='type'; reverseSort = !reverseSort">
+					Type
+					<span ng-show="orderByField == 'type'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+          		</a>
+			</th>
 		</tr>
 	</thead>
-	<tr ng-repeat="dish in filteredDishList = (dishList | filter:searchFood)" ng-click="getSelectedDish(dish)">
+	<tr ng-repeat="dish in filteredDishList = (dishList | filter:searchFood) | orderBy:orderByField:reverseSort" ng-click="getSelectedDish(dish)">
 		<td>{{dish.name}}</td>
-		<td>{{dish.cost}}</td>
-		<td>{{dish.category}}</td>
+		<td>${{dish.cost}}</td>
+		<td>{{dish.cuisine}}</td>
 		<td>{{dish.meat}}</td>
+		<td>{{dish.type}}</td>
 	</tr>
 </table>
 

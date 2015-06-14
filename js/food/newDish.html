@@ -10,29 +10,63 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="InputCategory">Category</label>
-                <div class="input-group">
-                    <input type="text" class="form-control" name="InputCategory" ng-model="InputCategory" placeholder="Enter Category" required>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                <label>Category</label>
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="cuisineList" data-toggle="dropdown" aria-expanded="true">
+                    {{currCuisine}}
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="cuisineList">
+                    <li ng-repeat="item in cuisineList">
+                        <a ng-click="setCurrentVal(item, 'currCuisine')">
+                        {{item}}
+                        </a>
+                    </li>
+                  </ul>
                 </div>
             </div>
             <div class="form-group">
-                <label for="InputMeat">Meat</label>
-                <div class="input-group">
-                    <input type="text" class="form-control" name="InputMeat" ng-model="InputMeat" placeholder="Enter Meat" required>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                <label>Meat</label>
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="meatList" data-toggle="dropdown" aria-expanded="true">
+                    {{currMeat}}
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="meatList">
+                    <li ng-repeat="item in meatList">
+                        <a ng-click="setCurrentVal(item, 'currMeat')">
+                        {{item}}
+                        </a>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Type</label>
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="typeList" data-toggle="dropdown" aria-expanded="true">
+                    {{currType}}
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="typeList">
+                    <li ng-repeat="item in typeList">
+                        <a ng-click="setCurrentVal(item, 'currType')">
+                        {{item}}
+                        </a>
+                    </li>
+                  </ul>
                 </div>
             </div>
             <div class="form-group">
                 <label for="dropdownMenu1">Ingredients</label>
 				<div class="dropdown">
 				  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-				    {{currCategory}}
+				    {{currIngredients}}
 				    <span class="caret"></span>
 				  </button>
 				  <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="dropdownMenu1">
 				  	<li ng-repeat="item in itemList">
-				  		<a ng-click="setCurrentVal(item)">
+				  		<a ng-click="setCurrentVal(item, 'currIngredients')">
 				  		{{item}}
 				  		</a>
 				  	</li>
