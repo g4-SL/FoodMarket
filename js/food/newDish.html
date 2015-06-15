@@ -59,7 +59,7 @@
             </div>
             <div class="form-group">
                 <label for="dropdownMenu1">Ingredients</label>
-				<div class="dropdown">
+				<div class="dropup">
 				  <button class="btn btn-default dropdown-toggle btn-block" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
 				    {{currIngredients}}
 				    <span class="caret"></span>
@@ -75,8 +75,8 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Back" class="btn btn-default" ng-click="goBack()">
-    			<input type="submit" id="submit" value="Submit" class="btn btn-info pull-right" ng-click="submitNewDish()">
+                <input type="submit" id="submit" value="Submit" class="btn btn-info" ng-click="submitNewDish()">
+                <input type="submit" id="cancelBtn" value="Cancel" class="btn btn-default pull-right" ng-click="goBack()">
             </div>
         </div>
 	    <div class="col-lg-5 col-md-push-1">
@@ -84,8 +84,8 @@
 				<table class="table">
 					<tr ng-repeat="item in chosenItem" ng-hide="deleteItem">
 						<td>{{item}}</td>
-						<td><input type="number" id="quantity" ng-model="currVal" min="1" max="50" required/></td>
-						<td>$<input type="number" id="cost" ng-model="cost[item]" min="1" max="100" required/></td>
+						<td><input type="number" id="quantity" ng-model="currVal" min="1" max="50"/></td>
+						<td>$<input type="number" id="cost" ng-model="cost[item]" min="0" max="100"/></td>
                         <td><span ng-click="deleteItem = true; removeItem(item)" class="ion-close-round"></span></td>
 					</tr>
 				</table>

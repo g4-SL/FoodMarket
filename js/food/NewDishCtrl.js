@@ -46,10 +46,13 @@ app.controller('NewDishCtrl', ['$scope', '$location', 'Recipe', 'Ingredient', fu
 	}
 
 	$scope.submitNewDish = function(){
-		var totalCost = 0;
+		var totalCost = 0.00;
 
 		for(var i in $scope.cost){
-			totalCost = totalCost + $scope.cost[i];
+			if(isNaN($scope.cost[i]))
+				break;
+
+			totalCost = totalCost + parseFloat($scope.cost[i]);
 		}
 
 		var criteria = {
@@ -76,6 +79,10 @@ app.controller('NewDishCtrl', ['$scope', '$location', 'Recipe', 'Ingredient', fu
 			if($scope.chosenItem[i] == item)
 				$scope.chosenItem.splice(i, 1);
 		}
+	}
+	
+	$scope.goBack = function(){
+		$location.path("/");
 	}
 
 	$scope.getIngredientList();

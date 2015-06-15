@@ -1,14 +1,8 @@
-/*body{
-	color: #505050;
-	background-color: #B5B5B5;
-	font-family: 'Open Sans Condensed', sans-serif;
-}*/
-
 .heading{
     background-color: #404040;
     color: #fff;
     padding: 20px 0 20px 0; 
-	margin-top: 100px;
+	margin-top: 60px;
     margin-left: auto;
     margin-right: auto;
     width: 80%;
@@ -22,13 +16,17 @@
 }
 
 .container{
+    max-width: 80%;
+    max-height: auto;
+    padding: 30px 30px 40px 30px;
+	background-color: #fff;
+}
+
+.innerContainer{
+    margin-top: 5px;
+    max-width: 90%;
     margin-left: auto;
     margin-right: auto;
-	background-color: #fff;
-	padding-bottom: 200px;
-    padding: 40px 40px 200px 40px;
-/*    font-size: 20px;
-    font-family: 'Open Sans Condensed', sans-serif;*/
 }
 
 .resultCont{

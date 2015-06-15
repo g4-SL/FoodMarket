@@ -1,6 +1,18 @@
 app.controller('FoodListCtrl', ['$scope', '$location', 'Recipe', function($scope, $location, Recipe) {
 
   	$scope.reverseSort = false;
+  	$scope.dishList = [];
+  	var init = true;
+
+  	$scope.show = function(len){
+  		if(init == true){
+  			return false;
+  		}
+  		else if(!len)
+  			return true;
+  		else
+  			return false;
+  	}
 
 	$scope.populateFoodList = function(){
 		var criteria = {orderby: [{Name: 'ASC'}]};
@@ -22,6 +34,7 @@ app.controller('FoodListCtrl', ['$scope', '$location', 'Recipe', function($scope
 				});
 			});
 			$scope.dishList = tempList;
+			init = false;
 			$scope.$apply();
 		});
 	};

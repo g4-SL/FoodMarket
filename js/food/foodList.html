@@ -52,7 +52,7 @@
 	</tr>
 </table>
 
-<div class="container resultCont" ng-show="!filteredDishList.length">
+<div class="container resultCont" ng-show="show(filteredDishList.length)">
 	Results not found
 	<br>
 	<input type="submit" value="Add new recipe" class="btn btn-default" ng-click="addNew()">
